@@ -12,7 +12,15 @@ public class App
     private static Logger logger = LoggerFactory.getLogger(App.class);
     public static void main( String[] args )
     {
-        logger.info("LOG TEST {}", logger.getClass().getName());
         System.out.println( "Hello World!" );
+        printLogs();
+    }
+    
+    public static void printLogs() {
+        logger.error("LOG TEST {}", "error");
+        logger.warn("LOG TEST {}", "warn");
+        logger.info("LOG TEST {}", "info");
+        logger.debug("LOG TEST {}", "debug");
+        logger.trace("LOG TEST {}", "trace");
     }
 }
