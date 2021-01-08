@@ -1,12 +1,17 @@
 package com.example;
 
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Unit test for simple App.
  */
+@Slf4j
 public class AppTest 
     extends TestCase
 {
@@ -35,5 +40,11 @@ public class AppTest
     {
         App.exec();
         assertTrue( true );
+        User user = new User();
+        user.setId(Integer.valueOf(1));
+        user.setName("Bob");
+        assertThat(user.getId(), is(1));
+        assertThat(user.getName(), is("Bob"));
+        log.debug("Slf4j Lombok");
     }
 }
