@@ -1,39 +1,20 @@
 package com.example;
 
-import java.util.ResourceBundle;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.common.Command;
+import com.example.common.CommandFactory;
 
 /**
- * Hello world!
+ * メインクラス.
  *
  */
-public class App 
-{
-    private static Logger logger = LoggerFactory.getLogger(App.class);
-    private static ResourceBundle rBundle = ResourceBundle.getBundle("app");
-    public static void main( String[] args )
-    {
-        exec();
-    }
-    
-    public static void exec() {
-        System.out.println( "Hello World!" );
-        printLogs();
-        printProp();
-    }
-    
-    public static void printLogs() {
-        logger.error("LOG TEST {}", "error");
-        logger.warn("LOG TEST {}", "warn");
-        logger.info("LOG TEST {}", "info");
-        logger.debug("LOG TEST {}", "debug");
-        logger.trace("LOG TEST {}", "trace");
-    }
-    
-    public static void printProp() {
-        String val = rBundle.getString("key");
-        logger.info(val);
-    }
+public class App {
+  /**
+   * メインメソッド.
+   *
+   * @param args 引数
+   */
+  public static void main(String[] args) {
+    Command command = CommandFactory.create();
+    command.execute();
+  }
 }
