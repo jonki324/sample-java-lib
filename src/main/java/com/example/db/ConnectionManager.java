@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * コネクションマネージャークラス.
  */
 @Slf4j
-public class ConnectionManager {
+public class ConnectionManager implements AutoCloseable {
   private static final ResourceBundle R_BUNDLE = ResourceBundle.getBundle("db");
 
   private Connection connection;
@@ -42,6 +42,11 @@ public class ConnectionManager {
       throw new RuntimeException(e);
     }
     return connection;
+  }
+
+  @Override
+  public void close() throws Exception {
+    closeConnection();
   }
 
   /**
