@@ -33,7 +33,7 @@ public class ConnectionManager implements AutoCloseable {
   public Connection getConnection() {
     try {
       if (connection == null || connection.isClosed()) {
-        connection = DriverManager.getConnection(R_BUNDLE.getString("URL") + ";create=true");
+        connection = DriverManager.getConnection(R_BUNDLE.getString("URL"));
         connection.setAutoCommit(false);
         log.info("コネクション取得成功");
       }
@@ -56,7 +56,6 @@ public class ConnectionManager implements AutoCloseable {
     try {
       if (connection != null && !connection.isClosed()) {
         connection.close();
-        DriverManager.getConnection(R_BUNDLE.getString("URL") + ";shutdown=true");
         log.info("コネクション切断成功");
       }
     } catch (SQLException e) {
