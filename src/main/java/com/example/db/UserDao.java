@@ -21,7 +21,7 @@ public class UserDao extends BaseDao {
     try (Statement stmt = getConnection().createStatement()) {
       stmt.executeUpdate("create table users(user_id varchar(10), user_name varchar(50))");
     } catch (SQLException e) {
-      log.error("SQL実行失敗: {}", e);
+      log.error("SQL実行失敗: {}", e.getMessage());
       throw new RuntimeException(e);
     }
   }
