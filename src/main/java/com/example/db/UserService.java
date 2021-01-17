@@ -26,4 +26,26 @@ public class UserService {
       throw new RuntimeException(e);
     }
   }
+
+  /**
+   * ユーザー追加.
+   */
+  public void add() {
+    try (ConnectionManager connectionManager = new ConnectionManager()) {
+      try {
+        Connection connection = connectionManager.getConnection();
+        UserDao dao = new UserDao(connection);
+        User user = new User();
+        user.setUserId("u01");
+        user.setUserName("Bob");
+        dao.insert(user);
+        connectionManager.commit();
+      } catch (RuntimeException e) {
+        connectionManager.rollback();
+      }
+    } catch (Exception e) {
+      log.error("コネクションクローズ失敗: {}", e);
+      throw new RuntimeException(e);
+    }
+  }
 }
