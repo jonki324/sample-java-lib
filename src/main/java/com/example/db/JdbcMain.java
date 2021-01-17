@@ -9,6 +9,7 @@ public class JdbcMain implements Command {
   @Override
   public void execute() {
     UserService service = new UserService();
-    service.createTable();
+    // service.createTable();
+    service.add();
   }
 }
