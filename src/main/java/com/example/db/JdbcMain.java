@@ -10,6 +10,7 @@ public class JdbcMain implements Command {
   public void execute() {
     UserService service = new UserService();
     // service.createTable();
-    service.add();
+    // service.add();
+    service.findAll();
   }
 }
