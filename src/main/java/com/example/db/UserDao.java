@@ -35,7 +35,7 @@ public class UserDao extends BaseDao {
    *
    * @param user ユーザークラス
    */
-  public void insert(User user) {
+  public void insert(UserEntiry user) {
     String sql = "insert into users(user_id, user_name) values(?, ?)";
     try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
       ps.setString(1, user.getUserId());
@@ -53,13 +53,13 @@ public class UserDao extends BaseDao {
    *
    * @return ユーザーリスト
    */
-  public List<User> selectAll() {
-    List<User> users = new ArrayList<>();
+  public List<UserEntiry> selectAll() {
+    List<UserEntiry> users = new ArrayList<>();
     String sql = "select * from users;";
     try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
-        User user = new User();
+        UserEntiry user = new UserEntiry();
         user.setUserId(rs.getString("user_id"));
         user.setUserName(rs.getString("user_name"));
         users.add(user);

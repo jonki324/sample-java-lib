@@ -7,6 +7,6 @@ import lombok.Data;
  */
 @Data
 public class UserEntiry {
-  private Integer userId;
+  private String userId;
   private String userName;
 }

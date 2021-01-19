@@ -36,7 +36,7 @@ public class UserService {
       try {
         Connection connection = connectionManager.getConnection();
         UserDao dao = new UserDao(connection);
-        User user = new User();
+        UserEntiry user = new UserEntiry();
         user.setUserId("u01");
         user.setUserName("Bob");
         dao.insert(user);
@@ -57,7 +57,7 @@ public class UserService {
     try (ConnectionManager connectionManager = new ConnectionManager()) {
       Connection connection = connectionManager.getConnection();
       UserDao dao = new UserDao(connection);
-      List<User> users = dao.selectAll();
+      List<UserEntiry> users = dao.selectAll();
       log.info("ユーザーリスト: {}", users.toString());
     } catch (Exception e) {
       log.error("コネクションクローズ失敗: {}", e);
