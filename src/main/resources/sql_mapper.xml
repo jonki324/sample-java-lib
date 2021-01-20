@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mybatis">
-  <select id="selectAll" resultType="com.example.mybatis.UserEntiry">
+  <select id="selectAll" resultType="map">
     select * from users
   </select>
 </mapper>
