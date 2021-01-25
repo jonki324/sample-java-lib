@@ -33,3 +33,5 @@ target
 *.csv
 *.zip
 node
+node_modules
+out
