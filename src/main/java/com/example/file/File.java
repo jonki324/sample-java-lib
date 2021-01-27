@@ -4,7 +4,9 @@ import com.example.common.Command;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,6 +22,8 @@ public class File implements Command {
     write();
     read();
     delete();
+    copy();
+    move();
   }
 
   private void read() {
@@ -47,6 +51,26 @@ public class File implements Command {
   private void delete() {
     try {
       Files.deleteIfExists(Paths.get("./file.txt"));
+    } catch (IOException e) {
+      log.error("IOエラー", e);
+    }
+  }
+
+  private void copy() {
+    try {
+      Path source = Paths.get("./user_w.csv");
+      Path target = Paths.get("./out");
+      Files.copy(source, target.resolve(source.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+    } catch (IOException e) {
+      log.error("IOエラー", e);
+    }
+  }
+
+  private void move() {
+    try {
+      Path source = Paths.get("./user_w.csv");
+      Path target = source.resolveSibling("user_w_new.csv");
+      Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
     } catch (IOException e) {
       log.error("IOエラー", e);
     }
