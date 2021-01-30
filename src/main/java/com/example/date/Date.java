@@ -16,6 +16,7 @@ public class Date implements Command {
     now();
     stringToDatetime();
     convert();
+    plusMinus();
   }
 
   private void now() {
@@ -38,5 +39,14 @@ public class Date implements Command {
     log.info(ts.toString());
     LocalDateTime dt = ts.toLocalDateTime();
     log.info(dt.toString());
+  }
+
+  private void plusMinus() {
+    LocalDateTime now = LocalDateTime.now();
+    LocalDateTime oneDayPlus = now.plusDays(1);
+    LocalDateTime oneDayMinus = now.minusDays(1);
+    log.info(now.toString());
+    log.info(oneDayPlus.toString());
+    log.info(oneDayMinus.toString());
   }
 }
